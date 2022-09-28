@@ -62,6 +62,9 @@
                         {{ cd.rating }}
                     </td>
                     <td class="text-end">
+                        <a href="{{ path('cd_detail', { id: cd.id } ) }}" class="btn btn-info">Zobrazit</a>
+                        <a href="{{ path('cd_edit', { id: cd.id } ) }}" class="btn btn-warning">Upravit</a>
+                        <a href="{{ path('cd_delete', { id: cd.id } ) }}" class="btn btn-danger">Smazat</a>
                     </td>
                 </tr>
             {% endfor %}
