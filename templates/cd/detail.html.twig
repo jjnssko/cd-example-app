@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Detail CD - {{ cd.title }} | {{ parent() }}{% endblock %}
+{% block metaDescription %}This is detail of CD called {{ cd.title }} made by {{ cd.artist }} and released in year {{ cd.releaseYear|date("Y") }} {% endblock %}
+
 {% block body %}
     <div class="my-5 mx-5 border border-dark">
         <table class="table table-striped">
@@ -23,7 +26,9 @@
                     {{ cd.id }}
                 </td>
                 <td scope="row">
-                    <img src="{{ asset('build/images/cds/' ~ cd.image ) }}">
+                    {% if cd.image %}
+                     <img src="{{ asset('build/images/cds/' ~ cd.image ) }}">
+                    {% endif %}
                 </td>
                 <td>
                     {{ cd.title }}

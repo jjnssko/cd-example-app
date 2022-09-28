@@ -33,10 +33,34 @@ class DetailController extends AbstractController
     }
 
     #[Route('detail/{id}/edit', name: 'edit')]
-    public function editCD(): Response
+    public function editCD(Request $request, FileUploader $fileUploader, int $id): Response
     {
+        $cd = $this->doctrine->getManager()->getRepository(StoreCDs::class)
+            ->find($id)
+        ;
+
+        dump($cd->getImage());        
+		$form = $this->createForm(CDFormType::class, $cd, [
+        ])->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('image')->getData();
+            if ($imageFile) {
+                $imageFileName = $fileUploader->upload($imageFile);
+                $cd->setImage($imageFileName);
+            }
+
+            $this->em->persist($cd);
+            $this->em->flush();
+
+            return $this->redirectToRoute('dashboard');
+        }
+
         return $this->render('cd/edit.html.twig', [
-            'controller_name' => 'DetailController',
+            'form' => $form->createView(),
+            'cd' => $cd,
         ]);
     }
 

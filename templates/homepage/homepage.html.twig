@@ -38,7 +38,9 @@
                         {{ cd.id }}
                     </td>
                     <td scope="row">
-                        <img src="{{ asset('build/images/cds/' ~ cd.image ) }}">
+                        {% if cd.image %}
+                          <img src="{{ asset('build/images/cds/' ~ cd.image ) }}">
+                        {% endif %}
                     </td>
                     <td>
                         {{ cd.title }}

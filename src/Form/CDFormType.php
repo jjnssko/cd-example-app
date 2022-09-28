@@ -9,7 +9,6 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class CDFormType extends AbstractType
@@ -17,9 +16,11 @@ class CDFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
 	{
 		$builder
-            ->add('image', FileType::class, array(
+            ->add('image', FileType::class, [
                 'label' => 'Obrázek',
-            ))
+                'required'=> false,
+                'mapped' => false,
+            ])
 			->add('title', TextType::class, [
 				'label' => 'Název CD',
                 'required' => true,
@@ -56,12 +57,4 @@ class CDFormType extends AbstractType
             ])
         ;
 	}
-
-
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            // Configure your form options here
-        ]);
-    }
 }
