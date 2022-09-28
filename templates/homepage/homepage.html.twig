@@ -56,10 +56,10 @@
                         {{ cd.releaseYear|date("d.m.Y") }}
                     </td>
                     <td>
-                        {{ cd.price }}
+                        {{ cd.price }} CZK
                     </td>
                     <td>
-                        {{ cd.rating }}
+                        {{ cd.rating }}%
                     </td>
                     <td class="text-end">
                         <a href="{{ path('cd_detail', { id: cd.id } ) }}" class="btn btn-info">Zobrazit</a>

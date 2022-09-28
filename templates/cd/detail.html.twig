@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="my-5 mx-5 border border-dark">
+        <table class="table table-striped">
+            <thead>
+            <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">Obrázek</th>
+                <th scope="col">Název CD</th>
+                <th scope="col">Interpret</th>
+                <th scope="col">Album</th>
+                <th scope="col">Žánr</th>
+                <th scope="col">Rok vydání</th>
+                <th scope="col">Cena</th>
+                <th scope="col">Hodnocení</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="text-center">
+                <td scope="row">
+                    {{ cd.id }}
+                </td>
+                <td scope="row">
+                    <img src="{{ asset('build/images/cds/' ~ cd.image ) }}">
+                </td>
+                <td>
+                    {{ cd.title }}
+                </td>
+                <td>
+                    {{ cd.artist }}
+                </td>
+                <td>
+                    {{ cd.album }}
+                </td>
+                <td>
+                    {{ cd.genre }}
+                </td>
+                <td>
+                    {{ cd.releaseYear|date("d.m.Y") }}
+                </td>
+                <td>
+                    {{ cd.price }}
+                </td>
+                <td>
+                    {{ cd.rating }}
+                </td>
+                <td class="text-end">
+                    <a href="{{ path('cd_delete', { id: cd.id } ) }}" class="btn btn-danger">Smazat</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <hr>
+        <a href="/">Go back</a>
+
+    </div>
+{% endblock %}

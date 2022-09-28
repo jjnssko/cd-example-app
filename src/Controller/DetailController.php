@@ -23,12 +23,12 @@ class DetailController extends AbstractController
     ) {}
 
     #[Route('detail/{id}', name: 'detail')]
-    public function detailCD(Request $request, int $id): Response
+    public function detailCD(int $id): Response
     {
         $cdDetail = $this->doctrine->getRepository(StoreCDs::class)->find($id);
-        dump($cdDetail);
+
         return $this->render('cd/detail.html.twig', [
-            'controller_name' => 'DetailController',
+            'cd' => $cdDetail,
         ]);
     }
 
