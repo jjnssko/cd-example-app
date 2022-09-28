@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CD | {{ parent() }}{% endblock %}
+{% block metaDescription %}Page where can be created new CD which will be shown at dashboard{% endblock %}
+
+{% block body %}
+    <div class="my-5 mx-5 border border-dark">
+        <table class="table table-striped">
+            <thead>
+            <tr class="text-center">
+                {{ form_start(form) }}
+                <th scope="col">Obrázek</th>
+                <th scope="col">Název CD</th>
+                <th scope="col">Interpret</th>
+                <th scope="col">Album</th>
+                <th scope="col">Žánr</th>
+                <th scope="col">Rok vydání</th>
+                <th scope="col">Cena</th>
+                <th scope="col">Hodnocení</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td scope="row">
+                    {{ form_widget(form.image) }}
+                </td>
+                <td>
+                    {{ form_widget(form.title) }}
+                </td>
+                <td>
+                    {{ form_widget(form.artist) }}
+                </td>
+                <td>
+                    {{ form_widget(form.album) }}
+                </td>
+                <td>
+                    {{ form_widget(form.genre) }}
+                </td>
+                <td>
+                    {{ form_widget(form.releaseYear) }}
+                </td>
+                <td>
+                    {{ form_widget(form.price) }}
+                </td>
+                <td>
+                    {{ form_widget(form.rating) }}
+                </td>
+                <td class="text-end">
+                    {{ form_widget(form.submit) }}
+                </td>
+                {{ form_errors(form) }}
+                {{ form_end(form) }}
+            </tr>
+            </tbody>
+        </table>
+        <hr>
+        <a href="/">Go back</a>
+    </div>
+{% endblock %}

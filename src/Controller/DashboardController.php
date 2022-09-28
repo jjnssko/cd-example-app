@@ -16,7 +16,9 @@ class DashboardController extends AbstractController
     #[Route('/', name: 'dashboard')]
     public function index(Request $request): Response
     {
+        $cdsOverview = $this->doctrine->getRepository(StoreCDs::class)->findAll();
         return $this->render('homepage/homepage.html.twig', [
+            'cds' => $cdsOverview,
         ]);
     }
 }
