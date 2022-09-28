@@ -72,12 +72,6 @@ Encore
     // uncomment if you're having problems with a jQuery plugin
     .autoProvidejQuery()
 
-    .addAliases({
-        'PUBLIC': path.resolve(__dirname, 'public'),
-        'STYLES': path.resolve(__dirname, 'assets/styles'),
-        'SCRIPTS': path.resolve(__dirname, 'assets/scripts')
-    })
-
     .copyFiles({
         from: "./assets/images",
         // optional target path, relative to the output dir
