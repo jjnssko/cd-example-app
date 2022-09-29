@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="my-5 mx-5 border border-dark">
+        <table class="table table-striped">
+            <thead>
+            <tr class="text-center">
+                <th scope="col">Obrázek</th>
+                <th scope="col">Název CD</th>
+                <th scope="col">Interpret</th>
+                <th scope="col">Album</th>
+                <th scope="col">Žánr</th>
+                <th scope="col">Rok vydání</th>
+                <th scope="col">Cena</th>
+                <th scope="col">Hodnocení</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for cd in cds %}
+                <tr class="text-center">
+                    <td scope="row">
+                        {% if cd.image %}
+                          <img src="{{ asset('build/images/cds/' ~ cd.image ) }}">
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ cd.title }}
+                    </td>
+                    <td>
+                        {{ cd.artist }}
+                    </td>
+                    <td>
+                        {{ cd.album }}
+                    </td>
+                    <td>
+                        {{ cd.genre }}
+                    </td>
+                    <td>
+                        {{ cd.releaseYear|date("d.m.Y") }}
+                    </td>
+                    <td>
+                        {{ cd.price }} CZK
+                    </td>
+                    <td>
+                        {{ cd.rating }}%
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
